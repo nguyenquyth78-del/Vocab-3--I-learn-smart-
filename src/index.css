@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  
+  --color-primary: #1E3A8A;
+  --color-secondary: #F472B6;
+  --color-accent: #3B82F6;
+  --color-school-bg: #FFFFFF;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 overflow-x-hidden;
+  font-family: var(--font-sans);
+}
+
+.mobile-container {
+  @apply max-w-[480px] min-h-screen mx-auto bg-white shadow-xl relative flex flex-col;
+}
+
+/* Custom styles for Grade 3 theme */
+.glass-panel {
+  @apply bg-white/80 backdrop-blur-md border border-white/20;
+}
+
+.card-grade3 {
+  @apply bg-white rounded-2xl p-4 shadow-sm border border-slate-100 transition-all duration-300;
+}
+
+.card-grade3:hover {
+  @apply shadow-md transform -translate-y-1;
+}
+
+.title-display {
+  font-family: var(--font-display);
+}
+
