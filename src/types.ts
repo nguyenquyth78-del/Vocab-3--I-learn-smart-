@@ -1,38 +1,41 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 export interface VocabularyWord {
   id: string;
   unit: number;
-  topic?: string;
+  topic: string;
   word: string;
   ipa: string;
   meaning: string;
   example: string;
+  audioText: string;
 }
+
+export type QuizType = 'spelling' | 'listening' | 'meaning';
 
 export interface QuizQuestion {
   id: string;
-  type: 'spelling-missing' | 'spelling-scrambled' | 'listening' | 'meaning-en-vn' | 'meaning-vn-en';
+  type: QuizType;
+  wordId: string;
   question: string;
   options?: string[];
-  answer: string;
-  audioUrl?: string; // For listening quiz
+  correctAnswer: string;
+  hint?: string;
 }
 
-export interface PronunciationTheory {
+export interface PronunciationTopic {
   id: string;
   title: string;
-  category: 's/es' | 'ed' | 'word-stress' | 'sentence-stress';
-  content: string;
-  exercises?: QuizQuestion[];
+  theory: string;
+  examples: { text: string; audio: string }[];
 }
 
 export interface UserProgress {
-  totalScore: number;
+  score: number;
   stars: number;
   completedUnits: number[];
-  quizStats: {
-    [key: string]: {
-      correct: number;
-      total: number;
-    };
-  };
+  completedQuizzes: string[];
 }
